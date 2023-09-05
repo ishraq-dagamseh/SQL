@@ -3,7 +3,7 @@
 لاكتساب المزيد من الممارسة باستخدام ORDER BY:
 
 اكتب استعلامًا لإرجاع أول 10 نتائج في الجدولالطلبات. قم بتضمين id وoccurred_at وtotal_amt_usd.
-
+note: using orders or demo.orders database
 Sol:
 SELECT id, occurred_at,total_amt_usd
 FROM orders
