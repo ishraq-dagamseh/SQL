@@ -1,0 +1,42 @@
+1. used in WHERE statement
+2. used to provides inverse results for IN,LIKE,and similar operators.
+
+الاختبار: NOT
+الأسئلة حول استخدام عامل التشغيل NOT
+يمكننا سحب كل الصفوف التي تم استبعادها من الاستعلامات في المفهومين الماضيين باستخدام عامل التشغيل الجديد لدينا.
+#################
+الحلول لأسئلة NOT IN
+################
+1. استخدم الجدول الحسابات للعثور على اسم الحساب، وبشكل أساسي poc ومعرف مستودع المبيعات لجميع المتاجر باستخدام Walmart وTarget وNordstrom.
+sol:
+SELECT name, primary_poc, id
+FROM accounts
+WHERE name NOT IN ('Walmart', 'Target','Normstrom')
+
+
+2. استخدم الجدول web_events للعثور على كل المعلومات المتعلقة بالأفراد الذين تم الاتصال بهم عبر أي أسلوب باستثناء استخدام الأسلوب organic أو adwords.
+sol: SELECT *
+FROM web_events
+WHERE channel NOT IN ('organic','adwords')
+#######################
+الحلول لأسئلة NOT LIKE
+#######################
+استخدام الجدول الحسابات للعثور على:
+
+3.كل الشركات التي لا تبدأ أسماؤها بحرف 'C'.
+sol:
+SELECT *
+FROM accounts
+WHERE name NOT LIKE ('C%')
+
+4.كل الشركات التي لا تحتوي أسماؤها على سلسلة 'one' في مكان ما في الاسم.
+sol: 
+SELECT *
+FROM accounts
+WHERE name NOT LIKE ('%one%')
+
+5.كل الشركات التي لا تنتهي أسماؤها بحرف 's'."
+sol: 
+SELECT *
+FROM accounts
+WHERE name NOT LIKE ('%s')
