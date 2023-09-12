@@ -1,0 +1,40 @@
+1. LIKE: we can use it instead of equal sign 
+EX: SELECT *
+    FROM demo.web_events_full
+    WHERE referrer_url='http:www.google.com'
+
+on the previous code will be return nothing 
+######################
+instead of them we can use LIKE 
+EX: SELECT *
+    FROM demo.web_events_full
+    WHERE referrer_url LIKE '%google%'
+
+###############
+الاختبار: LIKE
+الأسئلة حول استخدام عامل التشغيل LIKE
+استخدم الجدول الحسابات للعثور على
+
+1. كل الشركات التي تبدأ أسماؤها بحرف 'C'.
+sol:
+SELECT name
+FROM accounts 
+WHERE name LIKE 'C%'
+
+2.كل الشركات التي تحتوي أسماؤها على سلسلة 'one' في مكان ما في الاسم.
+sol:
+SELECT name
+FROM accounts 
+WHERE name LIKE '%one%'
+
+
+
+3.كل الشركات التي تنتهي أسماؤها بحرف 's'.
+
+sol:
+SELECT name
+FROM accounts 
+WHERE name LIKE '%s'
+
+conclusion: we concluded that the place of % sign has effect on the results, when put it after characters or statement it will be appears all statements that start with this char.
+and when we but the sign arounded the char. it will appears all statements included the decided char. and if we put the sign before it will be appears all statements ended with decided chars.
