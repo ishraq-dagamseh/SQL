@@ -1,0 +1,32 @@
+we can use AND to apply multiple conditions 
+EX: SELECT * 
+    FROM demo.orders
+    WHERE occurred_at >= '2016-4-1' AND occurred_at >= '2016-10-16'
+    ORDER BY occurred_at
+
+we can use BETWEEN with AND, such as:
+WHERE occurred_at BETWEEN '2016-4-1' AND '2016-10-16'
+################################
+الاختبار: AND وBETWEEN
+الأسئلة حول استخدام عاملي التشغيل AND وBETWEEN
+1. اكتب استعلامًا يقوم بإرجاع كل الطلبات حيث تكون standard_qty أعلى من 1000، ويكون poster_qty مساويًا لـ 0، ويكون gloss_qty مساويًا لـ 0.
+SOL: 
+SELECT *
+FROM orders
+WHERE standard_qty >1000 AND poster_qty =0 AND gloss_qty =0
+##############################
+
+2. يؤدي استخدام جدول الحسابات إلى العثور على كل الشركات التي لا تبدأ أسماؤها بحرف 'C' وتنتهي بـ 's'.
+SOL:
+SELECT name
+FROM accounts
+WHERE name NOT LIKE '%C' AND name LIKE 's%'
+#############################
+
+3.استخدم الجدول web_events للعثور على كل المعلومات المتعلقة بالأفراد الذين تم الاتصال بهم عبر organic أو adwords وبدء حسابها في أي نقطة في 2016 التي تم فرزها من الأحدث إلى الأقدم.
+
+sol: 
+SELECT *
+FROM web_events
+WHERE channel IN ('organic', 'adwords') AND occurred_at BETWEEN '2016-01-01' AND '2017-01-01'
+ORDER BY occurred_at DESC
