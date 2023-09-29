@@ -17,4 +17,40 @@ and
 
 SELECT col1 + col2 total, col3
 
+################################
+الاسئله: 
+
+
+1.قدّم جدولًا لكل web_events المرتبطة بـ اسم الجدول لـ Walmart. يجب أن تكون هناك ثلاثة أعمدة. تأكد من تضمين primary_poc، ووقت الحدث، وchannel لكل حدث. بالإضافة إلى ذلك، يمكنك اختيار إضافة عمود رابع لضمان عدم اختيار سوى أحداث Walmart.
+sol:
+
+SELECT a.primary_poc, w.occurred_at, w.channel, a.name
+FROM web_events w
+JOIN accounts a
+ON w.account_id = a.id
+WHERE a.name = 'Walmart';
+
+2.
+قم بتوفير جدول يوفر المنطقة لكل sales_rep بالإضافة إلى الحسابات المرتبطة الخاصة بهم. يجب أن يتضمن الجدول النهائي ثلاثة أعمدة: اسم المنطقة، واسم مستودع المبيعات، واسم الحساب. قم بفرز الحسابات أبجديًا (A-Z) وفقًا لاسم الحساب.
+
+sol:
+
+SELECT r.name region, s.name rep, a.name account
+FROM sales_reps s
+JOIN region r
+ON s.region_id = r.id
+JOIN accounts a
+ON a.sales_rep_id = s.id
+ORDER BY a.name;
+
+3. قم بإدخال الاسم لكل منطقة لكل طلب، بالإضافة إلى اسم الحساب وسعر الوحدة التي دفعها (total_amt_usd/total) لكل طلب. يجب أن يحتوي جدولك النهائي على 3 أعمدة: اسم المنطقة واسم الحساب وسعر الوحدة. هناك عدد قليل من الحسابات تحتوي على 0 بصفة إجمالية، لذا قمتُ بالقسمة على (الإجمالي + 0.01) لضمان عدم القسمة على صفر.
+SELECT r.name region, a.name account, 
+           o.total_amt_usd/(o.total + 0.01) unit_price
+FROM region r
+JOIN sales_reps s
+ON s.region_id = r.id
+JOIN accounts a
+ON a.sales_rep_id = s.id
+JOIN orders o
+ON o.account_id = a.id;
 
