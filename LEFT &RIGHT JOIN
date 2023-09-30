@@ -1,0 +1,37 @@
+There is three different typesof joins between tables: LIFT, RIGHT and FULL OUTER JOIN and we will focus on the first two types.
+We can decided the type on prefered joins using the LEFT JOIN or RIGHT JOIN, as we learn in JOIN statements.
+EX: 
+SELECT a.id, a.name, o.total
+FROM orders o
+LEFT JOIN accounts a 
+ON o.accounts_id=a.id
+
+LEFT JOIN will return all elements in left table(orders) with the matching rows in Right table.
+and RIGHT JOIN will return all rows in Right table with matching rows in left table.
+wich means in the two types will appears at least the INNER rows.
+#######################
+
+عمليات الربط الداخلية
+لاحظ أن كل عملية ربط قمنا بها حتى الآن هي INNER JOIN. وهذا يعني أننا لم نقم دائمًا بسحب الصفوف إلا إذا كانت موجودة كتطابق عبر جدولين.
+
+تسمح لنا عبارات JOIN الجديدة لدينا بسحب صفوف يمكن أن توجد فقط في أحد الجدولين. سيقدم هذا نوعًا جديدًا من البيانات يسمى NULL. ستتم مناقشة هذا النوع من البيانات بالتفصيل في الدرس التالي.
+
+ملاحظة سريعة
+قد تشاهد بناء جملة SQL لـ
+
+LEFT OUTER JOIN
+أو
+
+RIGHT OUTER JOIN
+هذه هي نفس الأوامر الدقيقة مثل LEFT JOIN وRIGHT JOIN التي تعرفنا عليها في الفيديو السابق.
+
+##################################
+عمليات الربط الخارجية
+النوع الأخير من الربط هو عملية الربط الخارجية. سيؤدي هذا إلى إرجاع مجموعة نتائج الربط الداخلي، بالإضافة إلى أي صفوف غير متطابقة من أي من الجدولين الذين تم ربطهما.
+
+يعمل هذا مرة أخرى على إرجاع الصفوف التي لا تتطابق مع بعضها البعض من الجدولين. حالات الاستخدام للحصول على ربط خارجي كامل هي نادرة للغاية.
+
+يمكنك الاطلاع على أمثلة عمليات الربط الخارجي على الرابط هنا ووصف لحالات الاستخدام النادرة هنا. لن نقضي الوقت في هذه الحالات نظرًا للحالات القليلة التي قد تحتاج إلى استخدامها.
+
+على غرار ما سبق، قد تشاهد اللغة FULL OUTER JOIN، وهي نفس لغة OUTER JOIN.
+
